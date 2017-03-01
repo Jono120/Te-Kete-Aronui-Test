@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Kete</h1>
+    <p class="lead">
+        Welcome to Te Kete Aronui, the formerly known CASScaid. The Kete Aronui or the basket of knowledge is being used
+        for the purposes of bringing you the most up to date and relevant information on a regular basis.
+    </p>
+    <p><a href="~/Views/Home/About.cshtml" class="btn btn-primary btn-lg">Learn more about Kete &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        @* shows the title of the box that will hold any information that will be displayed from the database *@
+        <h2>Incoming Information Feed</h2>
+        <p>
+            The incoming feed from the sources will be placed here and the information will be sorted by date of insertion,
+            with the Links being within the title instead of within a separate line. With all the rest of the relevant information,
+            displayed underneath in order of position within the database settings.
+        </p>
+
+        <p>
+            @* contains search box definitions for the topics that are displayed *@
+            Search by Topic:
+            <input name="SearchString" id="SearchString" type="text" value=""><input type="submit" value="Search">
+        </p>
+
+        @*<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>*@
+    </div>
+    <div class="col-md-4">
+        @* contains the filters that will be used to rearrange the information from the database *@
+        <h2>Information Feed Filters</h2>
+        <p>This will be where all the filters for the feed will be placed.</p>
+        @*<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>*@
+    </div>
+    <div class="col-md-4">
+        <h2>Contact Information</h2>
+        <p>
+            @*This will be the place that all the relevant contact information will be.*@
+            If any help is needed for broken links or can't find what you are looking for, you can email us or give us a call.
+            <address><strong>General Help:</strong> <a href="mailto:infohelp@cass.govt.nz">Information Services</a><br /></address>
+        </p>
+        @*<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>*@
+    </div>
+</div>

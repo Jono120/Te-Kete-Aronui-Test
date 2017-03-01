@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=col-md-8" />
+    <title>Current Topics</title>
+</head>
+<body>
+    <div>
+        <p>
+            Topics View
+            @Model Topic
+
+            @Html.TextBox("TopicName", null, new { @class = "form-control"})
+        </p>
+    </div>
+</body>
+</html>

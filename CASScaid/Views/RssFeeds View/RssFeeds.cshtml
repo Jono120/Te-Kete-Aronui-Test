@@ -1,0 +1,107 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron">
+    <h1>Kete</h1>
+    <p class="lead">
+        Welcome to Te Kete Aronui, the formerly known CASScaid. The Kete Aronui or the basket of knowledge is being used
+        for the purposes of bringing you the most up to date and relevant information on a regular basis.
+    </p>
+    <p><a href="~/Views/Home/About.cshtml" class="btn btn-primary btn-lg">Learn more about Kete &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        @* shows the title of the box that will hold any information that will be displayed from the database *@
+        <h2>RSS Feed Information</h2>
+        <p>
+            @* contains search box definitions for the topics that are displayed *@
+            Search by Topic:
+            <input name="SearchString" id="SearchString" type="text" value=""><input type="submit" value="Search">
+        </p>
+        <p>
+            Search by Date:
+            <input name="SearchString" id="SearchString" type="date" value=""><input type="submit" value="Search">
+        </p>
+
+        @*<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>*@
+    </div>
+    <div class="col-md-4">
+        @* contains the filters that will be used to rearrange the information from the database *@
+        <h2>Information Feed Filters</h2>
+        <p>This will be where all the filters for the feed will be placed.</p>
+        @*<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>*@
+    </div>
+    <div class="col-md-4">
+        <h2>Contact Information</h2>
+        <p>
+            @*This will be the place that all the relevant contact information will be.*@
+            If any help is needed for broken links or can't find what you are looking for, you can email us or give us a call.
+            <address><strong>General Help:</strong> <a href="mailto:infohelp@cass.govt.nz">Information Services</a><br /></address>
+        </p>
+        @*<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>*@
+    </div>
+</div>
+
+@model PagedList.IPagedList<CASScaid.Models.RssFeeds>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "RSS Feeds";
+}
+
+<h2>Students</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm("Index", "Student", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("RSS Namme", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            First Name
+        </th>
+        <th>
+            @Html.ActionLink("Source Access Date", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th></th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstMidName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnrollmentDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
