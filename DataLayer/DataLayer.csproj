@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{727DE22A-F66B-4B5D-A915-C26FE9124525}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataLayer</RootNamespace>
+    <AssemblyName>DataLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Author.cs">
+      <DependentUpon>CASScaid Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CASScaid Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CASScaid Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CASScaid Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CASScaid Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CASScaid Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CASScaid Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="CASScaidContext.cs" />
+    <Compile Include="Category.cs">
+      <DependentUpon>CASScaid Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RepositoryClasses\Classes\CategoryRepository.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Content.cs">
+      <DependentUpon>CASScaid Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContentAuthorMapping.cs">
+      <DependentUpon>CASScaid Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContentTopicMapping.cs">
+      <DependentUpon>CASScaid Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmailBox.cs">
+      <DependentUpon>CASScaid Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RepositoryClasses\Classes\RssRepository.cs" />
+    <Compile Include="RepositoryClasses\Classes\TeamRepository.cs" />
+    <Compile Include="RepositoryClasses\Classes\TopicRepository.cs" />
+    <Compile Include="RepositoryClasses\Interface\ICategoryRepository.cs" />
+    <Compile Include="RepositoryClasses\Interface\IRssImporter.cs" />
+    <Compile Include="RepositoryClasses\Interface\IRssRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryClasses\Interface\ITeamRepository.cs" />
+    <Compile Include="RepositoryClasses\Interface\ITopicRepository.cs" />
+    <Compile Include="RSSFeed.cs">
+      <DependentUpon>CASScaid Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>CASScaid Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Team.cs">
+      <DependentUpon>CASScaid Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Topic.cs">
+      <DependentUpon>CASScaid Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TopicType.cs">
+      <DependentUpon>CASScaid Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Website.cs">
+      <DependentUpon>CASScaid Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WebsiteRSSFeedMapping.cs">
+      <DependentUpon>CASScaid Model.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="CASScaid Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CASScaid Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="CASScaid Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CASScaid Model.edmx</DependentUpon>
+      <LastGenOutput>CASScaid Model.Context.cs</LastGenOutput>
+    </None>
+    <None Include="CASScaid Model.edmx.diagram">
+      <DependentUpon>CASScaid Model.edmx</DependentUpon>
+    </None>
+    <None Include="CASScaid Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CASScaid Model.edmx</DependentUpon>
+      <LastGenOutput>CASScaid Model.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CASScaid Model.edmx.sql" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

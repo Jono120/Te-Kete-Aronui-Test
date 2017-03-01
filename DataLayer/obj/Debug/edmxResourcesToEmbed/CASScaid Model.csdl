@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CASSCAID_TestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Author">
+    <Key>
+      <PropertyRef Name="AuthorID" />
+    </Key>
+    <Property Name="AuthorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuthorName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Website" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Blog" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContentAuthorMappingContentAuthorID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ContentAuthorMappings" Relationship="Self.FK_ContentAuthorMappingAuthor" FromRole="Authors" ToRole="ContentAuthorMappings" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TopicTypeID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TopicTypes" Relationship="Self.FK_TopicTypeCategory" FromRole="Categories" ToRole="TopicTypes" />
+  </EntityType>
+  <EntityType Name="ContentAuthorMapping">
+    <Key>
+      <PropertyRef Name="ContentAuthorMappingID" />
+    </Key>
+    <Property Name="ContentAuthorMappingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuthorID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContentID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContentContentID" Type="Int32" Nullable="false" />
+    <Property Name="Author_AuthorID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Author" Relationship="Self.FK_ContentAuthorMappingAuthor" FromRole="ContentAuthorMappings" ToRole="Authors" />
+    <NavigationProperty Name="Contents" Relationship="Self.FK_ContentContentAuthorMapping" FromRole="ContentAuthorMappings" ToRole="Contents" />
+  </EntityType>
+  <EntityType Name="Content">
+    <Key>
+      <PropertyRef Name="ContentID" />
+    </Key>
+    <Property Name="ContentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Abstract" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContentTopicMappingContentMappingID" Type="Int32" Nullable="false" />
+    <Property Name="ContentAuthorMappingContentAuthorID" Type="Int32" Nullable="false" />
+    <Property Name="ContentTopicMappingContentMapID" Type="Int32" Nullable="false" />
+    <Property Name="ContentTopicMappingContentMapID1" Type="Int32" Nullable="false" />
+    <Property Name="ContentAuthorMapping_ContentAuthorID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ContentAuthorMapping" Relationship="Self.FK_ContentContentAuthorMapping" FromRole="Contents" ToRole="ContentAuthorMappings" />
+    <NavigationProperty Name="ContentTopicMapping" Relationship="Self.FK_ContentTopicMappingContent" FromRole="Contents" ToRole="ContentTopicMappings" />
+  </EntityType>
+  <EntityType Name="ContentTopicMapping">
+    <Key>
+      <PropertyRef Name="ContentTopicMappingID" />
+    </Key>
+    <Property Name="ContentTopicMappingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ContentID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TopicID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Contents" Relationship="Self.FK_ContentTopicMappingContent" FromRole="ContentTopicMappings" ToRole="Contents" />
+    <NavigationProperty Name="Topics" Relationship="Self.TopicContentTopicMapping" FromRole="ContentTopicMappings" ToRole="Topics" />
+  </EntityType>
+  <EntityType Name="EmailBox">
+    <Key>
+      <PropertyRef Name="EmailBoxID" />
+    </Key>
+    <Property Name="EmailBoxID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MailboxName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MailboxAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EmailAlert" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="WebsiteRSSFeedMappingWebsiteFeedMapping" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="WebsiteRSSFeedMappings" Relationship="Self.FK_WebsiteRSSFeedMappingEmailBox" FromRole="EmailBoxes" ToRole="WebsiteRSSFeedMappings" />
+  </EntityType>
+  <EntityType Name="RSSFeed">
+    <Key>
+      <PropertyRef Name="RSSFeedID" />
+    </Key>
+    <Property Name="RSSFeedID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RSSFeedName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FeedURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FeedAlert" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Feed_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Feed_Publication_Date" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Feed_PermaLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="WebsiteRSSFeedMappings" Relationship="Self.FK_WebsiteRSSFeedMappingRSSFeed" FromRole="RSSFeeds" ToRole="WebsiteRSSFeedMappings" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Team">
+    <Key>
+      <PropertyRef Name="TeamID" />
+    </Key>
+    <Property Name="TeamID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TeamName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TeamPage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TeamRequest" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TopicID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Topics" Relationship="Self.TopicTeam" FromRole="Teams" ToRole="Topics" />
+  </EntityType>
+  <EntityType Name="Topic">
+    <Key>
+      <PropertyRef Name="TopicID" />
+    </Key>
+    <Property Name="TopicID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TopicName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TopicTypeID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LinkDocument" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TeamRequest" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TeamID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TeamTeamID" Type="Int32" Nullable="false" />
+    <Property Name="WebsiteRSSFeedMappingWebsiteFeedMapping" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TopicTypes" Relationship="Self.FK_TopicTypeTopic" FromRole="Topics" ToRole="TopicTypes" />
+    <NavigationProperty Name="WebsiteRSSFeedMapping" Relationship="Self.FK_TopicWebsiteRSSFeedMapping" FromRole="Topics" ToRole="WebsiteRSSFeedMappings" />
+    <NavigationProperty Name="ContentTopicMappings" Relationship="Self.TopicContentTopicMapping" FromRole="Topics" ToRole="ContentTopicMappings" />
+    <NavigationProperty Name="Teams" Relationship="Self.TopicTeam" FromRole="Topics" ToRole="Teams" />
+  </EntityType>
+  <EntityType Name="TopicType">
+    <Key>
+      <PropertyRef Name="TopicTypeID" />
+    </Key>
+    <Property Name="TopicTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TopicTypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CategoryID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TopicsTopicID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Topics_TopicID" Type="Int32" Nullable="false" />
+    <Property Name="Category_CategoryID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_TopicTypeCategory" FromRole="TopicTypes" ToRole="Categories" />
+    <NavigationProperty Name="Topic" Relationship="Self.FK_TopicTypeTopic" FromRole="TopicTypes" ToRole="Topics" />
+  </EntityType>
+  <EntityType Name="WebsiteRSSFeedMapping">
+    <Key>
+      <PropertyRef Name="WebsiteRSSFeedMappingID" />
+    </Key>
+    <Property Name="WebsiteRSSFeedMappingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WebsiteID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FeedID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MailboxID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TopicsTopicID" Type="Int32" Nullable="false" />
+    <Property Name="EmailBox_MailboxID" Type="Int32" Nullable="false" />
+    <Property Name="RSSFeed_FeedID" Type="Int32" Nullable="false" />
+    <Property Name="Website_WebsiteID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EmailBox" Relationship="Self.FK_WebsiteRSSFeedMappingEmailBox" FromRole="WebsiteRSSFeedMappings" ToRole="EmailBoxes" />
+    <NavigationProperty Name="RSSFeed" Relationship="Self.FK_WebsiteRSSFeedMappingRSSFeed" FromRole="WebsiteRSSFeedMappings" ToRole="RSSFeeds" />
+    <NavigationProperty Name="Topics" Relationship="Self.FK_TopicWebsiteRSSFeedMapping" FromRole="WebsiteRSSFeedMappings" ToRole="Topics" />
+    <NavigationProperty Name="Website" Relationship="Self.FK_WebsiteRSSFeedMappingWebsite" FromRole="WebsiteRSSFeedMappings" ToRole="Websites" />
+  </EntityType>
+  <EntityType Name="Website">
+    <Key>
+      <PropertyRef Name="WebsiteID" />
+    </Key>
+    <Property Name="WebsiteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WebsiteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="WebsiteURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="WebsiteRSSFeedMappings" Relationship="Self.FK_WebsiteRSSFeedMappingWebsite" FromRole="Websites" ToRole="WebsiteRSSFeedMappings" />
+  </EntityType>
+  <Association Name="FK_ContentAuthorMappingAuthor">
+    <End Role="Authors" Type="Self.Author" Multiplicity="1" />
+    <End Role="ContentAuthorMappings" Type="Self.ContentAuthorMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authors">
+        <PropertyRef Name="AuthorID" />
+      </Principal>
+      <Dependent Role="ContentAuthorMappings">
+        <PropertyRef Name="Author_AuthorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TopicTypeCategory">
+    <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+    <End Role="TopicTypes" Type="Self.TopicType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="TopicTypes">
+        <PropertyRef Name="Category_CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContentContentAuthorMapping">
+    <End Role="ContentAuthorMappings" Type="Self.ContentAuthorMapping" Multiplicity="1" />
+    <End Role="Contents" Type="Self.Content" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ContentAuthorMappings">
+        <PropertyRef Name="ContentAuthorMappingID" />
+      </Principal>
+      <Dependent Role="Contents">
+        <PropertyRef Name="ContentAuthorMapping_ContentAuthorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContentTopicMappingContent">
+    <End Role="ContentTopicMappings" Type="Self.ContentTopicMapping" Multiplicity="1" />
+    <End Role="Contents" Type="Self.Content" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ContentTopicMappings">
+        <PropertyRef Name="ContentTopicMappingID" />
+      </Principal>
+      <Dependent Role="Contents">
+        <PropertyRef Name="ContentTopicMappingContentMapID1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WebsiteRSSFeedMappingEmailBox">
+    <End Role="EmailBoxes" Type="Self.EmailBox" Multiplicity="1" />
+    <End Role="WebsiteRSSFeedMappings" Type="Self.WebsiteRSSFeedMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmailBoxes">
+        <PropertyRef Name="EmailBoxID" />
+      </Principal>
+      <Dependent Role="WebsiteRSSFeedMappings">
+        <PropertyRef Name="EmailBox_MailboxID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WebsiteRSSFeedMappingRSSFeed">
+    <End Role="RSSFeeds" Type="Self.RSSFeed" Multiplicity="1" />
+    <End Role="WebsiteRSSFeedMappings" Type="Self.WebsiteRSSFeedMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RSSFeeds">
+        <PropertyRef Name="RSSFeedID" />
+      </Principal>
+      <Dependent Role="WebsiteRSSFeedMappings">
+        <PropertyRef Name="RSSFeed_FeedID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TopicTypeTopic">
+    <End Role="Topics" Type="Self.Topic" Multiplicity="1" />
+    <End Role="TopicTypes" Type="Self.TopicType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Topics">
+        <PropertyRef Name="TopicID" />
+      </Principal>
+      <Dependent Role="TopicTypes">
+        <PropertyRef Name="Topics_TopicID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TopicWebsiteRSSFeedMapping">
+    <End Role="WebsiteRSSFeedMappings" Type="Self.WebsiteRSSFeedMapping" Multiplicity="1" />
+    <End Role="Topics" Type="Self.Topic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WebsiteRSSFeedMappings">
+        <PropertyRef Name="WebsiteRSSFeedMappingID" />
+      </Principal>
+      <Dependent Role="Topics">
+        <PropertyRef Name="WebsiteRSSFeedMappingWebsiteFeedMapping" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WebsiteRSSFeedMappingWebsite">
+    <End Role="Websites" Type="Self.Website" Multiplicity="1" />
+    <End Role="WebsiteRSSFeedMappings" Type="Self.WebsiteRSSFeedMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Websites">
+        <PropertyRef Name="WebsiteID" />
+      </Principal>
+      <Dependent Role="WebsiteRSSFeedMappings">
+        <PropertyRef Name="Website_WebsiteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TopicContentTopicMapping">
+    <End Role="ContentTopicMappings" Type="Self.ContentTopicMapping" Multiplicity="*" />
+    <End Role="Topics" Type="Self.Topic" Multiplicity="*" />
+  </Association>
+  <Association Name="TopicTeam">
+    <End Role="Teams" Type="Self.Team" Multiplicity="*" />
+    <End Role="Topics" Type="Self.Topic" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="CASSCAID_TestEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Authors" EntityType="Self.Author" />
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="ContentAuthorMappings" EntityType="Self.ContentAuthorMapping" />
+    <EntitySet Name="Contents" EntityType="Self.Content" />
+    <EntitySet Name="ContentTopicMappings" EntityType="Self.ContentTopicMapping" />
+    <EntitySet Name="EmailBoxes" EntityType="Self.EmailBox" />
+    <EntitySet Name="RSSFeeds" EntityType="Self.RSSFeed" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Teams" EntityType="Self.Team" />
+    <EntitySet Name="Topics" EntityType="Self.Topic" />
+    <EntitySet Name="TopicTypes" EntityType="Self.TopicType" />
+    <EntitySet Name="WebsiteRSSFeedMappings" EntityType="Self.WebsiteRSSFeedMapping" />
+    <EntitySet Name="Websites" EntityType="Self.Website" />
+    <AssociationSet Name="FK_ContentAuthorMappingAuthor" Association="Self.FK_ContentAuthorMappingAuthor">
+      <End Role="Authors" EntitySet="Authors" />
+      <End Role="ContentAuthorMappings" EntitySet="ContentAuthorMappings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TopicTypeCategory" Association="Self.FK_TopicTypeCategory">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="TopicTypes" EntitySet="TopicTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContentContentAuthorMapping" Association="Self.FK_ContentContentAuthorMapping">
+      <End Role="ContentAuthorMappings" EntitySet="ContentAuthorMappings" />
+      <End Role="Contents" EntitySet="Contents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContentTopicMappingContent" Association="Self.FK_ContentTopicMappingContent">
+      <End Role="ContentTopicMappings" EntitySet="ContentTopicMappings" />
+      <End Role="Contents" EntitySet="Contents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WebsiteRSSFeedMappingEmailBox" Association="Self.FK_WebsiteRSSFeedMappingEmailBox">
+      <End Role="EmailBoxes" EntitySet="EmailBoxes" />
+      <End Role="WebsiteRSSFeedMappings" EntitySet="WebsiteRSSFeedMappings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WebsiteRSSFeedMappingRSSFeed" Association="Self.FK_WebsiteRSSFeedMappingRSSFeed">
+      <End Role="RSSFeeds" EntitySet="RSSFeeds" />
+      <End Role="WebsiteRSSFeedMappings" EntitySet="WebsiteRSSFeedMappings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TopicTypeTopic" Association="Self.FK_TopicTypeTopic">
+      <End Role="Topics" EntitySet="Topics" />
+      <End Role="TopicTypes" EntitySet="TopicTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TopicWebsiteRSSFeedMapping" Association="Self.FK_TopicWebsiteRSSFeedMapping">
+      <End Role="WebsiteRSSFeedMappings" EntitySet="WebsiteRSSFeedMappings" />
+      <End Role="Topics" EntitySet="Topics" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WebsiteRSSFeedMappingWebsite" Association="Self.FK_WebsiteRSSFeedMappingWebsite">
+      <End Role="Websites" EntitySet="Websites" />
+      <End Role="WebsiteRSSFeedMappings" EntitySet="WebsiteRSSFeedMappings" />
+    </AssociationSet>
+    <AssociationSet Name="TopicContentTopicMapping" Association="Self.TopicContentTopicMapping">
+      <End Role="ContentTopicMappings" EntitySet="ContentTopicMappings" />
+      <End Role="Topics" EntitySet="Topics" />
+    </AssociationSet>
+    <AssociationSet Name="TopicTeam" Association="Self.TopicTeam">
+      <End Role="Teams" EntitySet="Teams" />
+      <End Role="Topics" EntitySet="Topics" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

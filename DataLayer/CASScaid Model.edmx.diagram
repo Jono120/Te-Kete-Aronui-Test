@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1f971bda85db4acbab24648e2dcff6fd" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="CASSCAID_TestModel.Author" Width="1.5" PointX="4.875" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CASSCAID_TestModel.Category" Width="1.5" PointX="11.625" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CASSCAID_TestModel.ContentAuthorMapping" Width="1.5" PointX="8" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CASSCAID_TestModel.Content" Width="1.5" PointX="5.875" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CASSCAID_TestModel.ContentTopicMapping" Width="1.5" PointX="5.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CASSCAID_TestModel.EmailBox" Width="1.5" PointX="0.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CASSCAID_TestModel.RSSFeed" Width="1.5" PointX="0.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="CASSCAID_TestModel.sysdiagram" Width="1.5" PointX="15" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CASSCAID_TestModel.Team" Width="1.5" PointX="9.875" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CASSCAID_TestModel.Topic" Width="1.5" PointX="8.125" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CASSCAID_TestModel.TopicType" Width="1.5" PointX="11.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CASSCAID_TestModel.WebsiteRSSFeedMapping" Width="1.5" PointX="3.625" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CASSCAID_TestModel.Website" Width="1.5" PointX="0.5" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="CASSCAID_TestModel.FK_ContentAuthorMappingAuthor" ManuallyRouted="false" />
+        <AssociationConnector Association="CASSCAID_TestModel.FK_TopicTypeCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="CASSCAID_TestModel.FK_ContentContentAuthorMapping" ManuallyRouted="false" />
+        <AssociationConnector Association="CASSCAID_TestModel.FK_ContentTopicMappingContent" ManuallyRouted="false" />
+        <AssociationConnector Association="CASSCAID_TestModel.FK_WebsiteRSSFeedMappingEmailBox" ManuallyRouted="false" />
+        <AssociationConnector Association="CASSCAID_TestModel.FK_WebsiteRSSFeedMappingRSSFeed" ManuallyRouted="false" />
+        <AssociationConnector Association="CASSCAID_TestModel.FK_TopicTypeTopic" ManuallyRouted="false" />
+        <AssociationConnector Association="CASSCAID_TestModel.FK_TopicWebsiteRSSFeedMapping" ManuallyRouted="false" />
+        <AssociationConnector Association="CASSCAID_TestModel.FK_WebsiteRSSFeedMappingWebsite" ManuallyRouted="false" />
+        <AssociationConnector Association="CASSCAID_TestModel.TopicContentTopicMapping" ManuallyRouted="false" />
+        <AssociationConnector Association="CASSCAID_TestModel.TopicTeam" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
