@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CASScaid", "CASScaid\CASScaid.csproj", "{E6E59E04-FC70-413D-B84A-89A0B5F4E511}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{727DE22A-F66B-4B5D-A915-C26FE9124525}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CASScaidUnitTest", "CASScaidUnitTest\CASScaidUnitTest.csproj", "{9FCFC427-C73A-4EB1-AC23-35045AE243BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E6E59E04-FC70-413D-B84A-89A0B5F4E511}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6E59E04-FC70-413D-B84A-89A0B5F4E511}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6E59E04-FC70-413D-B84A-89A0B5F4E511}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6E59E04-FC70-413D-B84A-89A0B5F4E511}.Release|Any CPU.Build.0 = Release|Any CPU
+		{727DE22A-F66B-4B5D-A915-C26FE9124525}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{727DE22A-F66B-4B5D-A915-C26FE9124525}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{727DE22A-F66B-4B5D-A915-C26FE9124525}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{727DE22A-F66B-4B5D-A915-C26FE9124525}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FCFC427-C73A-4EB1-AC23-35045AE243BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FCFC427-C73A-4EB1-AC23-35045AE243BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FCFC427-C73A-4EB1-AC23-35045AE243BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FCFC427-C73A-4EB1-AC23-35045AE243BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
